@@ -241,7 +241,7 @@
         for ($i = 0; $i < $sizeN; $i++) {
             $total += $matrix[$i][$i];
         }
-        
+
         return $total;
     }
 
