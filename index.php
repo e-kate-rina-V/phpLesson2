@@ -10,32 +10,33 @@
 
     #Створіть функцію, яка обчислює середнє арифметичне значення з масиву чисел.
 
-    function arr_avg()
+    function averageArray($arr)
     {
-        $data = [2, 6, 8, 15.4, 10, 3, 8, 12, 11.3];
-        $avg = round(array_sum($data) / count($data), 2);
-        echo $avg;
+        $arr_avg = round(array_sum($arr) / count($arr), 2);
+        echo $arr_avg;
     }
 
-    arr_avg();
+    $arr = [2, 6, 8, 15.4, 10, 3, 8, 12, 11.3];
+    averageArray($arr);
 
     #Напишіть функцію для перевертання рядка.
 
-    function str_rev()
+    function reverseStr($string)
     {
-        $string = "Hello, World";
         echo strrev($string);
     }
 
+    $string = "Hello, World";
+
     echo "</br>";
-    str_rev();
+    reverseStr($string);
 
     #Створіть функцію, яка приймає масив чисел і повертає новий масив, в якому всі елементи збільшені на 10.
 
-    function arr_increase($arr)
+    function increaseArray($arr)
     {
         foreach ($arr as &$value) {
-            $value = $value * 10;
+            $value = $value + 10;
         }
         echo var_export($arr);
     }
@@ -43,26 +44,26 @@
     $data = [2, 6, 8, 15.4, 10, 3, 8, 12, 11.3];
 
     echo "</br>";
-    arr_increase($data);
+    increaseArray($data);
 
     #Напишіть функцію для визначення кількості голосних літер у рядку.
 
-    function str_vowels($string)
+    function vowelsNumInStr($string)
     {
-        $patt = '~(?<vowels>[аоуеиі])~iu';
-        preg_match_all($patt, $string, $a);
-        $vowels = count(array_filter($a['vowels']));
+        $pattern = '~(?<vowels>[аоуеиі])~iu';
+        preg_match_all($pattern, $string, $matches);
+        $vowels = count(array_filter($matches['vowels']));
         echo $vowels;
     }
 
     $string = "Привіт, Світ!";
 
     echo "</br>";
-    str_vowels($string);
+    vowelsNumInStr($string);
 
     #Створіть функцію для видалення дублікатів з масиву.
 
-    function dupl_rem($arr)
+    function removeDuplicates($arr)
     {
         $result = array_unique($arr);
 
@@ -72,29 +73,30 @@
     $data = [2, "Apple", 8, 10, 3, 8, 12, "Apple", "Banana"];
 
     echo "</br>";
-    dupl_rem($data);
+    removeDuplicates($data);
 
     #Напишіть функцію для перевірки того, чи є слово паліндромом.
 
-    function check_palindrome($string)
+    function checkPalindromeStr(string $string)
     {
-        if ($string == strrev($string))
+        if ($string == strrev($string)) {
             return "Слово $string является палиндромом";
-        else
-            return "Слово $string не является палиндромом";
+        }
+
+        return "Слово $string не является палиндромом";
     }
 
     echo "</br>";
-    echo check_palindrome('madam');
+    echo checkPalindromeStr('madam');
     echo "</br>";
-    echo check_palindrome('роза');
+    echo checkPalindromeStr('роза');
 
     #Створіть функцію, яка повертає масив, який складається з парних чисел від 1 до 50.
 
-    function even_arr()
+    function evenArray($start, $end)
     {
         $arr = [];
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = $start; $i <= $end; $i++) {
             if ($i % 2 == 0) {
                 $arr[] = $i;
             }
@@ -103,11 +105,11 @@
     }
 
     echo "</br>";
-    even_arr();
+    evenArray(1, 50);
 
     #Напишіть функцію для знаходження найменшого та найбільшого значення в масиві чисел.
 
-    function arr_max_min($arr)
+    function maxMinValueArray($arr)
     {
         echo max($arr);
         echo "</br>";
@@ -117,11 +119,11 @@
     $data = [2, 6, 8, 15.4, 10, 3, 8, 12, 11.3];
 
     echo "</br>";
-    arr_max_min($data);
+    maxMinValueArray($data);
 
     #Створіть функцію, яка приймає асоціативний масив і повертає новий масив зі значеннями, відсортованими за алфавітом за ключами.
 
-    function arr_sort($arr)
+    function sortAssocArrayByKey($arr)
     {
         ksort($arr);
 
@@ -133,11 +135,11 @@
     $data = array("l" => "lemon", "o" => "orange", "b" => "banana", "a" => "apple");
 
     echo "</br>";
-    arr_sort($data);
+    sortAssocArrayByKey($data);
 
     #Напишіть функцію для обчислення факторіалу числа.
 
-    function factor_calcul($num)
+    function calculateFactorial($num)
     {
         echo gmp_fact($num);
     }
@@ -145,7 +147,7 @@
     $num = 10;
 
     echo "</br>";
-    factor_calcul($num);
+    calculateFactorial($num);
 
     #Створіть функцію, яка знаходить всі прості числа в заданому діапазоні.
 
@@ -186,7 +188,7 @@
 
     #Напишіть функцію для об'єднання двох масивів без повторень.
 
-    function arr_merge($arr1, $arr2)
+    function mergeArray($arr1, $arr2)
     {
         $result = array_unique(array_merge($arr1, $arr2));
 
@@ -198,11 +200,11 @@
     $arr2 = [3, 5, 8, 10, 12, 1.4, 2.8];
 
     echo "</br>";
-    arr_merge($arr1, $arr2);
+    mergeArray($arr1, $arr2);
 
     #Створіть функцію, яка приймає рядок та повертає новий рядок, в якому кожне слово починається з великої літери.
 
-    function str_UpperCase($input)
+    function upperCaseStr($input)
     {
         echo ucwords($input);
     }
@@ -210,27 +212,28 @@
     $string = 'I love programming';
 
     echo "</br>";
-    str_UpperCase($string);
+    upperCaseStr($string);
 
     #Напишіть функцію для генерації випадкового пароля заданої довжини.
 
-    function gen_password($length)
+    function generatePassword($length)
     {
         $chars = 'qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP@!#$%&';
         $size = strlen($chars) - 1;
         $password = '';
-        while ($length--) {
+        for ($i = 0; $i < $length; $i++) {
             $password .= $chars[random_int(0, $size)];
         }
+
         return $password;
     }
 
     echo "</br>";
-    echo gen_password(8);
+    echo generatePassword(8);
 
     #Створіть функцію для знаходження суми елементів на головній діагоналі квадратної матриці.
 
-    function main_diag_sum($matrix)
+    function mainDiagonalSum($matrix)
     {
         $sizeN = count($matrix);
         $total = 0;
@@ -238,6 +241,7 @@
         for ($i = 0; $i < $sizeN; $i++) {
             $total += $matrix[$i][$i];
         }
+        
         return $total;
     }
 
@@ -248,11 +252,11 @@
     ];
 
     echo "</br>";
-    echo main_diag_sum($matrix);
+    echo mainDiagonalSum($matrix);
 
     #Напишіть функцію для видалення всіх HTML-тегів з рядка.
 
-    function str_rem($input)
+    function removeFromStr($input)
     {
         echo strip_tags($input);
     }
@@ -260,11 +264,11 @@
     $string = '</br>Hello</p>';
 
     echo "</br>";
-    str_rem($string);
+    removeFromStr($string);
 
     #Створіть функцію для реверсу асоціативного масиву (замініть ключі на значення і навпаки).
 
-    function arr_flip($arr)
+    function flipArray($arr)
     {
         echo var_export(array_flip($arr));
     }
@@ -272,11 +276,11 @@
     $input = ["l" => "lemon", "o" => "orange", "b" => "banana", "a" => "apple"];
 
     echo "</br>";
-    arr_flip($input);
+    flipArray($input);
 
     #Напишіть функцію для перетворення рядка у крапковану нотацію (camelCase).
 
-    function str_camelCase($input, $separator = '_')
+    function camelCaseStr($input, $separator = '_')
     {
         echo lcfirst(str_replace($separator, '', ucwords($input, $separator)));
     }
@@ -284,7 +288,7 @@
     $string = 'I love programming';
 
     echo "</br>";
-    str_camelCase($string);
+    camelCaseStr($string);
 
     #Створіть функцію, яка перевіряє, чи є число ступенем двійки.
 
@@ -293,6 +297,7 @@
         for ($x = 1; $x <= $number; $x *= 2) {
             if ($x == $number) {
                 echo "Число є ступенем двійки";
+
                 return;
             }
         }
@@ -306,11 +311,12 @@
 
     #Напишіть функцію для сортування масиву об'єктів за значенням конкретного ключа
 
-    function arr_sort_key($arr, $key)
+    function sortObjectArrayByKey($arr, $key)
     {
         usort($arr, function ($a, $b) use ($key) {
             return $a->$key <=> $b->$key;
         });
+
         return $arr;
     }
 
@@ -320,7 +326,7 @@
         (object) ['name' => 'Doe', 'age' => 20],
     ];
 
-    $sortedArr = arr_sort_key($objectsArr, 'age');
+    $sortedArr = sortObjectArrayByKey($objectsArr, 'age');
 
     echo "</br>";
     echo var_export($sortedArr);
