@@ -184,7 +184,6 @@
     echo "</br>";
     echo "Прості числа в діапазоні від $start до $end: " . implode(', ', $primes);
 
-
     #Напишіть функцію для об'єднання двох масивів без повторень.
 
     function arr_merge($arr1, $arr2)
@@ -201,7 +200,6 @@
     echo "</br>";
     arr_merge($arr1, $arr2);
 
-
     #Створіть функцію, яка приймає рядок та повертає новий рядок, в якому кожне слово починається з великої літери.
 
     function str_UpperCase($input)
@@ -213,7 +211,6 @@
 
     echo "</br>";
     str_UpperCase($string);
-
 
     #Напишіть функцію для генерації випадкового пароля заданої довжини.
 
@@ -230,7 +227,6 @@
 
     echo "</br>";
     echo gen_password(8);
-
 
     #Створіть функцію для знаходження суми елементів на головній діагоналі квадратної матриці.
 
@@ -254,7 +250,6 @@
     echo "</br>";
     echo main_diag_sum($matrix);
 
-
     #Напишіть функцію для видалення всіх HTML-тегів з рядка.
 
     function str_rem($input)
@@ -266,7 +261,6 @@
 
     echo "</br>";
     str_rem($string);
-
 
     #Створіть функцію для реверсу асоціативного масиву (замініть ключі на значення і навпаки).
 
@@ -292,7 +286,6 @@
     echo "</br>";
     str_camelCase($string);
 
-
     #Створіть функцію, яка перевіряє, чи є число ступенем двійки.
 
     function isPowerOfTwo($number)
@@ -303,29 +296,34 @@
                 return;
             }
         }
-    
+
         echo "Число не є ступенем двійки";
     }
-    
+
     $number = 256;
     echo "</br>";
     isPowerOfTwo($number);
-    
+
     #Напишіть функцію для сортування масиву об'єктів за значенням конкретного ключа
 
-    function arr_key_sort($arr)
+    function arr_sort_key($arr, $key)
     {
-        ksort($arr);
-
-        foreach ($arr as $key => $val) {
-            echo "$key = $val\n";
-        }
+        usort($arr, function ($a, $b) use ($key) {
+            return $a->$key <=> $b->$key;
+        });
+        return $arr;
     }
 
-    $data = array(3 => "lemon", 4 => "orange", 1 => "banana", 2 => "apple");
+    $objectsArr = [
+        (object) ['name' => 'John', 'age' => 25],
+        (object) ['name' => 'Jane', 'age' => 30],
+        (object) ['name' => 'Doe', 'age' => 20],
+    ];
+
+    $sortedArr = arr_sort_key($objectsArr, 'age');
 
     echo "</br>";
-    arr_key_sort($data);
+    echo var_export($sortedArr);
 
     ?>
 </body>
