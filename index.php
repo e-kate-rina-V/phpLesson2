@@ -132,7 +132,7 @@
         }
     }
 
-    $data = array("l" => "lemon", "o" => "orange", "b" => "banana", "a" => "apple");
+    $data = ["l" => "lemon", "o" => "orange", "b" => "banana", "a" => "apple"];
 
     echo "</br>";
     sortAssocArrayByKey($data);
